@@ -97,7 +97,7 @@ const uk: Messages = {
   cliUsage: "Використання",
   cliModels: "Моделі",
   cliExample: "Приклад",
-  cliGenerating: "Генерую {count} варіантів для {id} ({model}), {price}…",
+  cliGenerating: "Генерую варіанти ({count}) для {id} ({model}), {price}…",
   cliEstimate: "орієнтовно ${low}–{high}",
   cliDemoFree: "демо-режим, без витрат",
   cliModeLive: "Режим: живий ({model})",

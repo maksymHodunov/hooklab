@@ -11,12 +11,13 @@ export class DemoUnavailableError extends Error {}
 const normalize = (s: string) => s.replace(/\s+/g, " ").trim();
 
 // Demo mode: without an API key, return prepared examples for the three sample winners.
+// Like live results, they are in the language of the script (the samples are in English).
 export async function loadDemo(input: PromptInput & { lang: Lang }): Promise<Generation> {
   const winners = await loadWinners();
   const sample = winners.find((w) => w.id === input.winnerId && normalize(w.script) === normalize(input.script));
   if (!sample) throw new DemoUnavailableError();
 
-  const file = path.join(DATA_DIR, "demo", `${sample.id.toLowerCase()}.${input.lang}.json`);
+  const file = path.join(DATA_DIR, "demo", `${sample.id.toLowerCase()}.json`);
   const demo = GenerationSchema.parse(JSON.parse(await readFile(file, "utf8")));
   const notes: string[] = [];
 

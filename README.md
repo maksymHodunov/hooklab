@@ -33,7 +33,7 @@ npm start
 npm run cli -- data/winners/w01-laundry-monster.md --model opus --count 5 --angles pain,humor --lang en
 ```
 
-`--model` takes a full ID or a short name: `sonnet`, `opus`, `sol`, `astra`. `--lang` sets the language of the CLI output and of the directions in the brief (`en` or `uk`, default from `HOOKLAB_LANG`, otherwise English). The command prints the variants and saves the brief to `out/brief-<winner>-<run>.csv`.
+`--model` takes a full ID or a short name: `sonnet`, `opus`, `sol`, `astra`. `--lang` sets the language of the CLI output (`en` or `uk`, default from `HOOKLAB_LANG`, otherwise English). The command prints the variants and saves the brief to `out/brief-<winner>-<run>.csv`.
 
 ### Developing the web app
 
@@ -49,7 +49,7 @@ npm run dev          # Vite dev server with hot reload, proxies /api to :3000
 3. Click a card to select it. To rework a variant, press **Regenerate** on its card: pick quick tweaks (more dramatic, funnier, shorter, simpler, bolder visual, more UGC, different angle) and/or write a note. The new version gets a `mod_id` with a `v2`, `v3`… suffix.
 4. Download the brief. Put the `mod_id` (e.g. `W01-7c0060-H03`) into the creative name in Meta, so the UA report can be matched to a specific hook.
 
-The language switch in the header changes the interface and the language of the directions for designers (visual, reasoning, warnings). Copy for the ad itself (first line, on-screen text) is always US English.
+The language switch in the header changes only the interface. The brief itself (hooks, visuals, reasoning, warnings) is always written in the language of the winning script: an English script gets an English brief, a German script a German one.
 
 ## Models
 
@@ -100,7 +100,7 @@ model, angles  ─┘                                                           
 | `src/store.ts` | Saving runs and the event log for metrics |
 | `src/csv.ts` | CSV brief |
 | `web/` | React + Vite + Tailwind + shadcn/ui (preset `b1G2mZFZY`), UI strings in `web/src/lib/i18n.tsx` |
-| `data/` | Brand guide, 3 sample winners, demo examples in both languages. All data is fictional |
+| `data/` | Brand guide, 3 sample winners and their demo examples. All data is fictional |
 
 Requests go out with `provider.require_parameters: true`, so OpenRouter only routes them to providers that support structured outputs. The answer is validated with the zod schema once more.
 

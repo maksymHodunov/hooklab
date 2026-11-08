@@ -1,6 +1,5 @@
 import { readFile } from "node:fs/promises";
 import { loadBrandGuide } from "./data.ts";
-import type { Lang } from "./i18n.ts";
 import { getModel, type ModelOption } from "./models.ts";
 import { LOG_FILE } from "./paths.ts";
 import { buildSystemPrompt, buildUserMessage, type PromptInput } from "./prompt.ts";
@@ -23,17 +22,17 @@ export interface Estimate {
 const REWRITE_EXTRA_CHARS = 2300;
 
 // Cost estimate for generating a set of variants, before calling the model.
-export async function estimateGeneration(input: PromptInput & { model: string; lang: Lang }): Promise<Estimate> {
+export async function estimateGeneration(input: PromptInput & { model: string }): Promise<Estimate> {
   const m = getModel(input.model);
-  const chars = buildSystemPrompt(await loadBrandGuide(), input.lang).length + buildUserMessage(input).length;
+  const chars = buildSystemPrompt(await loadBrandGuide()).length + buildUserMessage(input).length;
   const outputTokens = m.estimate.outputBase + input.count * m.estimate.outputPerVariant;
   return finish("generate", m, chars, outputTokens);
 }
 
 // Cost estimate for regenerating one variant.
-export async function estimateRewrite(model: string, script: string, lang: Lang): Promise<Estimate> {
+export async function estimateRewrite(model: string, script: string): Promise<Estimate> {
   const m = getModel(model);
-  const chars = buildSystemPrompt(await loadBrandGuide(), lang).length + script.length + REWRITE_EXTRA_CHARS;
+  const chars = buildSystemPrompt(await loadBrandGuide()).length + script.length + REWRITE_EXTRA_CHARS;
   // Without the winner analysis the model writes and reasons less: in tests ~a quarter of the base plus one variant.
   const outputTokens = Math.round(m.estimate.outputBase * 0.25) + m.estimate.outputPerVariant;
   return finish("regenerate", m, chars, outputTokens);

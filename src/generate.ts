@@ -20,7 +20,7 @@ export const MAX_COUNT = 30;
 
 export interface GenerateInput extends PromptInput {
   model: string;
-  lang: Lang; // language of the directions (hook_visual, why, analysis, warnings)
+  lang: Lang; // UI language: only for messages; the brief itself follows the script language
 }
 
 export interface Variant extends VariantDraft {
@@ -105,7 +105,7 @@ export async function generate(input: GenerateInput): Promise<GenerationResult> 
   let meta: Pick<GenerationResult, "mode" | "modelUsed" | "provider" | "usage">;
   if (isLiveMode()) {
     // More variants means a longer answer: the token limit and timeout grow with the count.
-    const res = await callModel(input.model, input.lang, buildUserMessage(input), GenerationSchema, "hook_variants", {
+    const res = await callModel(input.model, buildUserMessage(input), GenerationSchema, "hook_variants", {
       maxTokens: Math.min(64_000, 6_000 + input.count * 1_500),
       timeoutMs: Math.max(180_000, input.count * 12_000),
     });
@@ -179,7 +179,7 @@ export async function rewriteVariant(
   if (index === -1) throw new GenerationError("variantNotFound", 404, { id: req.variantId });
 
   const started = Date.now();
-  const { expectedUsd, rawUsd } = await estimateRewrite(req.model, run.request.script, req.lang);
+  const { expectedUsd, rawUsd } = await estimateRewrite(req.model, run.request.script);
   const current = run.variants[index];
   const message = buildRewriteMessage({
     winnerId: run.winnerId,
@@ -190,7 +190,7 @@ export async function rewriteVariant(
     presets: req.presets,
     notes: req.notes,
   });
-  const res = await callModel(req.model, req.lang, message, RewriteSchema, "hook_rewrite", { maxTokens: 16_000, timeoutMs: 180_000 });
+  const res = await callModel(req.model, message, RewriteSchema, "hook_rewrite", { maxTokens: 16_000, timeoutMs: 180_000 });
 
   const version = (current.version ?? 1) + 1;
   const variant: Variant = {
@@ -227,7 +227,6 @@ interface OpenRouterResponse {
 // One model call via OpenRouter with structured output from a zod schema.
 async function callModel<T>(
   model: string,
-  lang: Lang,
   userMessage: string,
   schema: z.ZodType<T>,
   schemaName: string,
@@ -235,7 +234,7 @@ async function callModel<T>(
 ): Promise<{ data: T; modelUsed: string; provider: string | null; usage: Usage }> {
   // The JSON Schema for structured outputs is generated from the same zod schema that validates the answer.
   const { $schema: _ignored, ...jsonSchema } = z.toJSONSchema(schema);
-  const system = buildSystemPrompt(await loadBrandGuide(), lang);
+  const system = buildSystemPrompt(await loadBrandGuide());
 
   let res: Response;
   try {

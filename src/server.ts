@@ -115,7 +115,7 @@ async function handle(req: IncomingMessage, res: ServerResponse, lang: Lang) {
       } catch {
         throw new GenerationError("unknownModel", 400, { value: String(body.model), list: MODELS.map((m) => m.id).join(", ") });
       }
-      sendJson(res, 200, await estimateRewrite(model, run.request?.script ?? "", normalizeLang(body.lang, lang)));
+      sendJson(res, 200, await estimateRewrite(model, run.request?.script ?? ""));
     } else {
       sendJson(res, 200, await estimateGeneration(normalizeInput({ ...body, lang: body.lang ?? lang })));
     }

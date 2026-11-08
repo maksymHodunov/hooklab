@@ -1,4 +1,3 @@
-import type { Lang } from "./i18n.ts";
 import type { Angle } from "./schema.ts";
 
 const ANGLE_GUIDE: Record<Angle, string> = {
@@ -11,10 +10,8 @@ const ANGLE_GUIDE: Record<Angle, string> = {
   story: "a tiny first-person moment or confession",
 };
 
-const TEAM_LANGUAGE: Record<Lang, string> = { en: "English", uk: "Ukrainian" };
-
 // The system prompt is stable between requests: providers can cache it.
-export function buildSystemPrompt(brandGuide: string, lang: Lang): string {
+export function buildSystemPrompt(brandGuide: string): string {
   const angles = Object.entries(ANGLE_GUIDE)
     .map(([key, text]) => `- ${key}: ${text}`)
     .join("\n");
@@ -29,7 +26,7 @@ What makes a set of openings useful to the designer:
 - Each opening is a genuinely different bet: a different angle or mechanism, not a rephrasing of another variant or of the original hook. Spread them across angles unless the brief narrows the angles.
 - Each opening flows into the original body without edits: the winner's second scene must still make sense right after it.
 - hook_visual can be produced by a motion designer in about an hour from existing UGC footage, stock, product shots or simple kinetic type. No new shoot, no actors. In one or two sentences, say concretely what is on screen and what moves.
-- first_line is natural spoken US English, at most about 12 words, the way a real person talks to camera. If the winner has no voiceover, first_line is the text of the first frame.
+- first_line is natural spoken language, at most about 12 words, the way a real person talks to camera. If the winner has no voiceover, first_line is the text of the first frame.
 - on_screen_text is at most about 7 words, readable in one second on a phone, and adds to the first line instead of repeating it.
 - why is one sentence about the viewer insight the opening bets on.
 
@@ -42,7 +39,7 @@ Guardrails from Meta ads policy and the brand guide:
 - No health claims about the magnets.
 - If an opening is close to a line (a bold claim, a number taken from the original, a staged chat or review), keep it if it is strong, and say why in warnings, referring to it by its position: H01 for the first variant, H02 for the second, and so on. Warnings are for real risks a reviewer would act on, usually zero to three; skip general reminders and variants that carry no risk.
 
-Language: write first_line and on_screen_text in English for the US market. Write hook_visual, why, winner_analysis and warnings in ${TEAM_LANGUAGE[lang]}, the language the design team works in.
+Language: write everything (first_line, on_screen_text, hook_visual, why, winner_analysis and warnings) in the language of the winning script, so the brief reads as one piece. If the script mixes languages, use the language of its voiceover and on-screen text.
 
 Brand guide:
 <brand_guide>
