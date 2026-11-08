@@ -123,16 +123,18 @@ The pilot counts as a success if the time and adoption targets are met after 2 w
 
 ## Next iteration
 
-The first three items close the loop “winner → hooks → task → result” without manual exports.
+1. **More modification types.** Besides the hook: the CTA, captions in the body, a shorter cut of the ad. Each type is a separate test with its own `mod_id`, so it stays clear what worked. Technically it's a prompt and a response schema per type; the form and the brief stay the same.
 
-1. **Airtable.** Selected variants become designer tasks right away: brief, `mod_id`, winner, deadline. CSV stays as a fallback.
-2. **Meta.** The tool detects winners by ROMI and CPA on its own, runs generation for them and creates tasks in Airtable. Results of modifications are pulled back by `mod_id`, and the best hooks become examples in the prompt.
-3. **Slack.** Alerts about new winners and buttons to launch generation and other automations.
-4. **Localization for DE and FR.** Cultural adaptation of hooks, not literal translation, plus a checklist for native-speaker review. This unblocks the European tests.
+Items 2–4 close the loop “winner → hooks → task → result” without manual exports.
+
+2. **Airtable.** Selected variants become designer tasks right away: brief, `mod_id`, winner, deadline. CSV stays as a fallback.
+3. **Meta.** The tool detects winners by ROMI and CPA on its own, runs generation for them and creates tasks in Airtable. Results of modifications are pulled back by `mod_id`, and the best hooks become examples in the prompt.
+4. **Slack.** Alerts about new winners and buttons to launch generation and other automations.
+5. **Localization for DE and FR.** Cultural adaptation of hooks, not literal translation, plus a checklist for native-speaker review. This unblocks the European tests.
 
 Next, a bigger bet:
 
-5. **Video generation inside the tool**, growing into a creative builder: image and video generation, editing, subtitles.
+6. **Video generation inside the tool**, growing into a creative builder: image and video generation, editing, subtitles.
 
 ## MVP limitations
 
