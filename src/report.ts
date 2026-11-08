@@ -77,7 +77,8 @@ export function buildReport(runs: Pick<GenerationResult, "winnerId" | "variants"
   };
 }
 
-async function main() {
+// Reads out/runs and the event log; used by `npm run report` and GET /api/report.
+export async function loadReport(): Promise<Report> {
   let files: string[] = [];
   try {
     files = (await readdir(RUNS_DIR)).filter((f) => f.endsWith(".json"));
@@ -88,7 +89,11 @@ async function main() {
     files.map(async (f) => JSON.parse(await readFile(path.join(RUNS_DIR, f), "utf8")) as GenerationResult),
   );
   const log = await readFile(LOG_FILE, "utf8").catch(() => "");
-  const r = buildReport(runs, log.split("\n").filter(Boolean));
+  return buildReport(runs, log.split("\n").filter(Boolean));
+}
+
+async function main() {
+  const r = await loadReport();
   const pct = (x: number) => `${Math.round(x * 100)}%`;
   console.log(`Runs: ${r.runs}, variants: ${r.variants}`);
   console.log(

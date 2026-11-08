@@ -1,4 +1,5 @@
 import {
+  ChartColumnIcon,
   CircleAlertIcon,
   DownloadIcon,
   LayersIcon,
@@ -14,6 +15,7 @@ import { toast } from "sonner"
 
 import { HookForm, type FormState } from "@/components/hook-form"
 import { RegenerateDialog } from "@/components/regenerate-dialog"
+import { StatsDialog } from "@/components/stats-dialog"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -61,6 +63,7 @@ export default function App() {
   const [rewriteEstimate, setRewriteEstimate] = useState<number | null>(null)
   const [regenMeta, setRegenMeta] = useState("")
   const [estimateTick, setEstimateTick] = useState(0)
+  const [statsOpen, setStatsOpen] = useState(false)
   const errorRef = useRef<HTMLDivElement>(null)
 
   const live = status?.mode === "live"
@@ -218,6 +221,10 @@ export default function App() {
                 {live ? t("modeLive") : t("modeDemo")}
               </Badge>
             )}
+            <Button variant="outline" size="sm" onClick={() => setStatsOpen(true)}>
+              <ChartColumnIcon />
+              <span className="hidden sm:inline">{t("statsButton")}</span>
+            </Button>
             <ToggleGroup
               variant="outline"
               size="sm"
@@ -377,6 +384,7 @@ export default function App() {
         onClose={() => setRegenTarget(null)}
         onSubmit={regenerate}
       />
+      <StatsDialog open={statsOpen} onClose={() => setStatsOpen(false)} />
       <Toaster position="bottom-right" richColors />
     </div>
   )

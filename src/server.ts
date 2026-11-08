@@ -18,6 +18,7 @@ import { defaultModel, MODELS, resolveModel } from "./models.ts";
 import { ROOT, WEB_DIST } from "./paths.ts";
 import { REWRITE_PRESETS } from "./prompt.ts";
 import { ANGLES } from "./schema.ts";
+import { loadReport } from "./report.ts";
 import { getRun, logEvent, saveRun } from "./store.ts";
 
 try {
@@ -95,6 +96,12 @@ async function handle(req: IncomingMessage, res: ServerResponse, lang: Lang) {
       angles: ANGLES,
       presets: Object.keys(REWRITE_PRESETS),
     });
+    return;
+  }
+
+  // Usage metrics for the Stats panel (same numbers as `npm run report`).
+  if (req.method === "GET" && url.pathname === "/api/report") {
+    sendJson(res, 200, await loadReport());
     return;
   }
 
