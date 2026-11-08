@@ -2,6 +2,8 @@
 
 [Українська версія](README.uk.md)
 
+![HookLab: a winning script on the left, generated hook variants on the right](docs/screenshot.png)
+
 HookLab takes the script of a winning video ad and in about a minute suggests new first 3 seconds for modifications: the visual, the first line and the on-screen text. The body and CTA stay as in the winner. The designer clicks the variants they'll use, regenerates individual ones if needed (“more dramatic”, “shorter”, a free-form note) and downloads a brief as CSV. Claude and GPT models are connected through OpenRouter and can be switched in the form. The interface is available in English and Ukrainian.
 
 Built as an MVP for a MarTech homework assignment around a fictional DTC brand, SockLock (magnetic socks that don't get lost in the wash).
