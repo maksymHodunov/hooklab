@@ -1,0 +1,68 @@
+{
+  "winner_analysis": {
+    "why_it_won": "Parent humor and a recognizable scene with a teenager create a “that's my life too” feeling. The product is framed as the fix for a small family conflict, not just socks.",
+    "keep_unchanged": "Everything after second 3: the floor covered in socks, the SockLock box, the magnet-in-the-cuff explanation, pairs after the wash, the line “He still doesn't fold them. But they're pairs.” and the quiz offer."
+  },
+  "variants": [
+    {
+      "angle": "humor",
+      "hook_visual": "Mom stands in the bedroom doorway holding two different socks like evidence; title card “Exhibit A”.",
+      "first_line": "Exhibit A: the socks my son calls a pair.",
+      "on_screen_text": "Exhibit A 🧦",
+      "why": "The courtroom metaphor is funny and recognizable, and keeps the tone of the original."
+    },
+    {
+      "angle": "pain",
+      "hook_visual": "Close-up: a laundry hamper overflowing with mismatched socks, mom's hand in frame.",
+      "first_line": "Raising a teenager means sorting socks. Forever.",
+      "on_screen_text": "Send help 🧺",
+      "why": "The parent's pain, endless sorting, without blaming the kid."
+    },
+    {
+      "angle": "story",
+      "hook_visual": "Selfie shot: mom whispers into the camera next to her son's closed door.",
+      "first_line": "He doesn't know I'm filming his sock situation.",
+      "on_screen_text": "Sock situation: critical",
+      "why": "Secret filming adds intrigue and humor in a UGC sketch format."
+    },
+    {
+      "angle": "curiosity",
+      "hook_visual": "Kinetic text over a shot of the bedroom door, the door slowly opens.",
+      "first_line": "I finally found where my son's socks disappear to.",
+      "on_screen_text": "Under the bed? Worse.",
+      "why": "A promise to reveal a mystery, and the cut to the floor in the body delivers the answer."
+    },
+    {
+      "angle": "contrarian",
+      "hook_visual": "Mom sorts socks on the bed and suddenly tosses them over her shoulder.",
+      "first_line": "I stopped matching my son's socks. Best decision ever.",
+      "on_screen_text": "No more sorting",
+      "why": "An unexpected “I stopped” intrigues, and the body explains why it became possible."
+    },
+    {
+      "angle": "demo",
+      "hook_visual": "The son lazily tosses two SockLock socks into the hamper, and they click together mid-air (slow motion, simple motion graphics).",
+      "first_line": "Even a teenager can't separate these.",
+      "on_screen_text": "Teen-proof socks",
+      "why": "Shows the product through the original's hero; “teen-proof” is a short, clear promise."
+    },
+    {
+      "angle": "humor",
+      "hook_visual": "A family group chat mockup on a phone screen: mom writes “Whose sock is this??”, three replies say “not mine”.",
+      "first_line": "Every week in our family group chat:",
+      "on_screen_text": "\"Not mine.\"",
+      "why": "A chat mockup is a native format that's easy to build in motion, with recognizable family humor."
+    },
+    {
+      "angle": "pain",
+      "hook_visual": "Morning: the son runs to the school bus in two different socks, freeze frame on his feet with a caption.",
+      "first_line": "My son just left for school in two different socks. Again.",
+      "on_screen_text": "Again.",
+      "why": "A concrete morning scene; repeating “Again” amplifies the pain and leads to the fix."
+    }
+  ],
+  "warnings": [
+    "H07 is a family chat mockup, a staged scene. Don't present it as a real customer review.",
+    "H06 “Teen-proof socks” is a mild exaggeration. Don't back it up with numbers or guarantees."
+  ]
+}

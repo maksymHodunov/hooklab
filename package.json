@@ -1,0 +1,27 @@
+{
+  "name": "socklock-hooklab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HookLab: generates hook, first-line and on-screen text variants for ad modifications from a winning script",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "postinstall": "npm --prefix web install",
+    "build": "npm --prefix web run build",
+    "start": "npm run build && tsx src/server.ts",
+    "serve": "tsx src/server.ts",
+    "dev": "npm --prefix web run dev",
+    "cli": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit && npm --prefix web run typecheck"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

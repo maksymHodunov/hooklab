@@ -1,0 +1,69 @@
+{
+  "winner_analysis": {
+    "why_it_won": "A specific, funny number (“47 socks, I counted”) plus a familiar household pain: viewers recognize themselves within 2 seconds, and the UGC delivery feels like a review, not an ad.",
+    "keep_unchanged": "Everything after second 3: socks dumped on the bed, the magnetic click close-up, pairs coming out of the dryer, the 5 pairs for $29 offer and the quiz CTA."
+  },
+  "variants": [
+    {
+      "angle": "pain",
+      "hook_visual": "Close-up: a hand pulls a single sock out of the washer drum, peeks inside, and it's empty. Hollow drum sound.",
+      "first_line": "Every laundry day, one sock just... disappears.",
+      "on_screen_text": "Where do they GO?",
+      "why": "The most recognizable pain moment, the empty drum, raises a question the body of the ad answers."
+    },
+    {
+      "angle": "curiosity",
+      "hook_visual": "Kinetic type on black: a “Washer vs Me” scoreboard, the washer's score spins up fast, then a hard cut to the sock basket from the original.",
+      "first_line": "I started keeping score against our washing machine.",
+      "on_screen_text": "Washer: 47. Me: 0.",
+      "why": "A sports-style score builds intrigue and humor: viewers want to see how the game ends."
+    },
+    {
+      "angle": "humor",
+      "hook_visual": "Stock footage of a washer with simple motion-graphic eyes and teeth on top: the machine “chews” a sock for 2 seconds.",
+      "first_line": "Our washing machine is on a strict sock-only diet.",
+      "on_screen_text": "Feeding time 🧦",
+      "why": "Personifying the washer gives absurd humor that needs no shoot and begs to be shared."
+    },
+    {
+      "angle": "story",
+      "hook_visual": "Same UGC footage, but for the first second she speaks quietly, closer to the camera, like a confession; soft light, kitchen behind her.",
+      "first_line": "Okay, confession: I've been secretly throwing out single socks for years.",
+      "on_screen_text": "My sock secret 🤫",
+      "why": "The confession format holds attention: viewers wait for what comes next and recognize their own habit."
+    },
+    {
+      "angle": "contrarian",
+      "hook_visual": "Full-screen text over a pile of socks: “Stop buying socks.” One second later, cut to her with the basket.",
+      "first_line": "Stop buying more socks. Seriously.",
+      "on_screen_text": "Stop buying socks.",
+      "why": "A paradox from a sock brand stops the scroll; the body explains the problem is pairs, not quantity."
+    },
+    {
+      "angle": "demo",
+      "hook_visual": "The product first: two SockLock socks snap together at the cuff in slow motion with a loud click. Then cut to the basket.",
+      "first_line": "These socks literally cannot get separated.",
+      "on_screen_text": "*click*",
+      "why": "The mechanism is clear in one second; the loud sound stops people curious about how it works."
+    },
+    {
+      "angle": "pain",
+      "hook_visual": "Morning rush (stock): she digs through a drawer wearing one sock, the phone screen shows 7:52.",
+      "first_line": "It's 7:52 and I'm hunting for a matching sock. Again.",
+      "on_screen_text": "Late. Because of socks.",
+      "why": "The same pain in another context, the morning instead of laundry day, reaches people who never think about the washer."
+    },
+    {
+      "angle": "curiosity",
+      "hook_visual": "A detective board: sock photos, red strings between the washer, dryer and couch (simple motion graphics), then cut to the basket.",
+      "first_line": "I finally figured out where all our missing socks go.",
+      "on_screen_text": "Case closed 🔍",
+      "why": "Promising an answer to an eternal question is a classic curiosity gap, and the body closes it."
+    }
+  ],
+  "warnings": [
+    "H02 reuses the number “47” from the original. Keep it only if those are the UGC creator's real words.",
+    "H05 “Stop buying socks” is a paradox for a sock brand. Check that the transition to “So I switched to these” lands as a resolution, not a contradiction.",
+    "H06 shows the product before the pain: check that the cut to the pile of socks in the body doesn't confuse viewers."
+  ]
+}

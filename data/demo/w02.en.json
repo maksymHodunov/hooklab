@@ -1,0 +1,69 @@
+{
+  "winner_analysis": {
+    "why_it_won": "It works with the sound off: the first second shows a recognizable drawer chaos, and the slow-motion magnetic click is satisfying like ASMR.",
+    "keep_unchanged": "Everything after second 3: mismatched socks in hand, the slow-motion click, the washer timelapse, the neat drawer and the end card with the offer. The ad has no voiceover, so first_line here is the first-frame text."
+  },
+  "variants": [
+    {
+      "angle": "pain",
+      "hook_visual": "The same drawer in POV: a hand digs through the socks, a pair counter in the corner stays at zero.",
+      "first_line": "Pairs found: 0",
+      "on_screen_text": "Still looking…",
+      "why": "The counter amplifies the pain without words and works with the sound off."
+    },
+    {
+      "angle": "humor",
+      "hook_visual": "The drawer opens and endless mismatched socks spring out like a clown car (simple motion loop).",
+      "first_line": "Opening the sock drawer like:",
+      "on_screen_text": "🧦🧦🧦🧦🧦",
+      "why": "The “X like:” meme format is instantly recognizable, and the exaggeration makes the pain funny."
+    },
+    {
+      "angle": "curiosity",
+      "hook_visual": "Black screen, only the magnetic click sound and text. Then a light turns on over a chaotic drawer.",
+      "first_line": "This one sound fixed my sock drawer.",
+      "on_screen_text": "Sound on 🔊",
+      "why": "Intrigue through sound makes people turn it on and wait for the explanation."
+    },
+    {
+      "angle": "contrarian",
+      "hook_visual": "A perfectly organized drawer with dividers (stock), a red line strikes the text through, cut to a real chaotic drawer.",
+      "first_line": "Drawer organizers won't save your socks.",
+      "on_screen_text": "Here's why ↓",
+      "why": "It rejects popular advice and leads to the real cause: pairs come apart in the wash."
+    },
+    {
+      "angle": "demo",
+      "hook_visual": "Macro: two SockLock socks lie next to each other in the drawer and click together (simple motion over a product shot).",
+      "first_line": "Socks that find their own pair.",
+      "on_screen_text": "*click*",
+      "why": "Product magic in one second: a visual “wow” without explanation."
+    },
+    {
+      "angle": "story",
+      "hook_visual": "Phone footage: a kid holds two different socks up to the camera.",
+      "first_line": "Every morning, the same question:",
+      "on_screen_text": "\"Where's my other sock?\"",
+      "why": "A familiar family moment adds emotion: parents recognize their own mornings."
+    },
+    {
+      "angle": "pain",
+      "hook_visual": "Quick cuts of three 0.5 s shots: a sock under the couch, behind the washer, in the toy bin.",
+      "first_line": "Under the couch. Behind the washer. In the toy bin.",
+      "on_screen_text": "Pairs found: none",
+      "why": "The “searching the whole house” montage shows the scale of the pain and sets the rhythm."
+    },
+    {
+      "angle": "humor",
+      "hook_visual": "A “Lost & Found” sign on the drawer, the camera slowly pushes in, the drawer opens.",
+      "first_line": "Our sock drawer is basically a lost and found.",
+      "on_screen_text": "Lost & Found 🧦",
+      "why": "A simple household metaphor, clear in one second and without sound."
+    }
+  ],
+  "warnings": [
+    "The original has no voiceover: first_line in these variants is the first-frame text. If you add a voiceover, it shouldn't repeat on_screen_text.",
+    "H05 “Socks that find their own pair” is an artistic exaggeration. The magnet only works up close, so don't show socks pulling together across the whole drawer.",
+    "H03 asks viewers to turn the sound on: it makes sense for Reels and Stories, other variants are better for the feed."
+  ]
+}
