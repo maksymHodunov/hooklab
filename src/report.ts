@@ -9,7 +9,10 @@ import { LOG_FILE, RUNS_DIR } from "./paths.ts";
 export interface Report {
   runs: number;
   variants: number;
-  uniqueFirstLines: number; // share 0..1 of distinct first lines across all runs
+  // Diversity is measured per winner: different winners have different first lines by definition,
+  // so only repeated runs for the same winner show whether hooks get repetitive.
+  uniqueWithinWinner: number | null; // share 0..1 of distinct first lines across runs of the same winner
+  worstWinner: { winnerId: string; unique: number } | null;
   angles: Record<string, number>;
   exported: number; // variants taken into a brief
   regenerations: number;
@@ -24,9 +27,28 @@ export const normalizeLine = (s: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-export function buildReport(runs: Pick<GenerationResult, "variants">[], logLines: string[]): Report {
+export function buildReport(runs: Pick<GenerationResult, "winnerId" | "variants">[], logLines: string[]): Report {
   const variants = runs.flatMap((r) => r.variants);
-  const unique = new Set(variants.map((v) => normalizeLine(v.first_line)));
+
+  // Group runs by winner; only winners with 2+ runs can repeat themselves.
+  const byWinner = new Map<string, { runs: number; lines: string[] }>();
+  for (const r of runs) {
+    const g = byWinner.get(r.winnerId) ?? { runs: 0, lines: [] };
+    g.runs += 1;
+    g.lines.push(...r.variants.map((v) => normalizeLine(v.first_line)));
+    byWinner.set(r.winnerId, g);
+  }
+  let uniqueSum = 0;
+  let totalSum = 0;
+  let worstWinner: Report["worstWinner"] = null;
+  for (const [winnerId, g] of byWinner) {
+    if (g.runs < 2 || g.lines.length === 0) continue;
+    const unique = new Set(g.lines).size;
+    uniqueSum += unique;
+    totalSum += g.lines.length;
+    const share = unique / g.lines.length;
+    if (!worstWinner || share < worstWinner.unique) worstWinner = { winnerId, unique: share };
+  }
   const angles: Record<string, number> = {};
   for (const v of variants) angles[v.angle] = (angles[v.angle] ?? 0) + 1;
 
@@ -46,7 +68,8 @@ export function buildReport(runs: Pick<GenerationResult, "variants">[], logLines
   return {
     runs: runs.length,
     variants: variants.length,
-    uniqueFirstLines: variants.length ? unique.size / variants.length : 1,
+    uniqueWithinWinner: totalSum ? uniqueSum / totalSum : null,
+    worstWinner,
     angles,
     exported,
     regenerations,
@@ -68,7 +91,11 @@ async function main() {
   const r = buildReport(runs, log.split("\n").filter(Boolean));
   const pct = (x: number) => `${Math.round(x * 100)}%`;
   console.log(`Runs: ${r.runs}, variants: ${r.variants}`);
-  console.log(`Unique first lines across runs: ${pct(r.uniqueFirstLines)}`);
+  console.log(
+    r.uniqueWithinWinner === null
+      ? "Unique first lines within a winner: — (needs 2+ runs for the same winner)"
+      : `Unique first lines within a winner: ${pct(r.uniqueWithinWinner)} (lowest: ${r.worstWinner!.winnerId}, ${pct(r.worstWinner!.unique)})`,
+  );
   console.log(`Angles: ${Object.entries(r.angles).map(([a, n]) => `${a} ${pct(n / Math.max(r.variants, 1))}`).join(", ") || "—"}`);
   console.log(`Taken into briefs: ${r.exported} (${pct(r.exported / Math.max(r.variants, 1))} of generated)`);
   console.log(`Regenerations per variant taken: ${r.exported ? (r.regenerations / r.exported).toFixed(2) : "—"}`);

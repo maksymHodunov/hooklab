@@ -116,7 +116,7 @@ Requests go out with `provider.require_parameters: true`, so OpenRouter only rou
 | Share of pilot designers' modifications made with HookLab | 0% | ≥ 50% | 2 weeks | `mod_id` in creative names |
 | Share of generated variants taken into production | — | ≥ 30% | 2 weeks | `out/usage-log.jsonl`: `export.selected` / `generate.returned` |
 | Regenerations per variant taken | — | ≤ 1 | 2 weeks | `out/usage-log.jsonl`: `regenerate` events / `export.selected` |
-| Hook diversity: unique first lines across runs | — | ≥ 90% | monthly | `npm run report` |
+| Hook diversity: unique first lines across runs of the same winner | — | ≥ 90% | monthly | `npm run report` |
 | Modifications per month | 240 | 300 → 360 | 1 / 3 months | Production report |
 | Win rate of HookLab modifications | same as other modifications | not lower | 4 weeks | UA report, filtered by `mod_id` |
 | ROMI | 135% overall | ≥ 130% on added spend, ≥ 125% overall | weekly | UA report |
