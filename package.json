@@ -14,7 +14,9 @@
     "serve": "tsx src/server.ts",
     "dev": "npm --prefix web run dev",
     "cli": "tsx src/cli.ts",
-    "typecheck": "tsc --noEmit && npm --prefix web run typecheck"
+    "typecheck": "tsc --noEmit && npm --prefix web run typecheck",
+    "report": "tsx src/report.ts",
+    "test": "node --import tsx --test test/*.test.ts"
   },
   "dependencies": {
     "zod": "^4.6.7"

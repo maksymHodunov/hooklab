@@ -66,6 +66,11 @@ async function calibration(kind: EstimateKind, model: string): Promise<{ factor:
   } catch {
     return { factor: 1, runs: 0 };
   }
+  return calibrationFactor(log, kind, model);
+}
+
+// Pure part of the calibration, so it can be tested without a log file.
+export function calibrationFactor(log: string, kind: EstimateKind, model: string): { factor: number; runs: number } {
   const ratios = log
     .split("\n")
     .flatMap((line) => {

@@ -101,6 +101,8 @@ model, angles  ─┘                                                           
 | `src/cli.ts` | Generation from the terminal |
 | `src/store.ts` | Saving runs and the event log for metrics |
 | `src/csv.ts` | CSV brief |
+| `src/report.ts` | `npm run report`: usage, diversity and cost metrics from `out/` |
+| `test/` | Unit tests (`npm test`) for the CSV brief, demo mode, cost-estimate calibration and the report |
 | `web/` | React + Vite + Tailwind + shadcn/ui (preset `b1G2mZFZY`), UI strings in `web/src/lib/i18n.tsx` |
 | `data/` | Brand guide, 3 sample winners and their demo examples. All data is fictional |
 
@@ -114,10 +116,13 @@ Requests go out with `provider.require_parameters: true`, so OpenRouter only rou
 | Share of pilot designers' modifications made with HookLab | 0% | ≥ 50% | 2 weeks | `mod_id` in creative names |
 | Share of generated variants taken into production | — | ≥ 30% | 2 weeks | `out/usage-log.jsonl`: `export.selected` / `generate.returned` |
 | Regenerations per variant taken | — | ≤ 1 | 2 weeks | `out/usage-log.jsonl`: `regenerate` events / `export.selected` |
+| Hook diversity: unique first lines across runs | — | ≥ 90% | monthly | `npm run report` |
 | Modifications per month | 240 | 300 → 360 | 1 / 3 months | Production report |
 | Win rate of HookLab modifications | same as other modifications | not lower | 4 weeks | UA report, filtered by `mod_id` |
 | ROMI | 135% overall | ≥ 130% on added spend, ≥ 125% overall | weekly | UA report |
 | Business impact | — | +$55k expected gross profit a month | 3 months | Added spend × (ROMI − 100%) |
+
+The usage metrics above are printed by `npm run report`. The risk to watch at scale is hooks getting repetitive across runs; if diversity drops, past hooks for the same winner can be passed into the prompt as “don't repeat”.
 
 The pilot counts as a success if the time and adoption targets are met after 2 weeks and the win rate hasn't dropped after 4 weeks. Then we roll out to all six designers. In parallel we compare models: which one gives the highest share of used variants per dollar.
 
